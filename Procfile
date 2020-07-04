@@ -1,1 +1,1 @@
-web: gunicorn cropmappapp.wsgi --log-file -
+web: gunicorn cropmap.wsgi --log-file -
