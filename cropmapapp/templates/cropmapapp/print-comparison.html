@@ -1,0 +1,94 @@
+{% extends 'cropmapapp/base.html' %}
+{% block title %}CropMap | Image Data{% endblock %}
+{% block images %}active{% endblock %}
+{% load staticfiles %}
+{% block body %}
+<div class="row" style="margin-top: 50px;">
+	<div class="col-lg-2"></div>
+	<div class="col-lg-8">
+		<div class="row">
+			<table>
+				<tr>
+					<td style="padding-left: 10px;">
+						<img src="{%  static 'cropmapapp/img/pic_da_logo.jpg' %}" style="width: 80px;">
+					</td>
+					<td style="padding-left: 20px;">
+						Republic of the Philippines<br>
+						<b style="font-size: 16px;">Department of Agriculture</b><br>
+						Regional Field Office No. 02<br>
+						Carig Sur, Tuguegarao City, Cagayan
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel-heading">
+					<h3>Cropping Comparison Report</h3>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<table class="table">
+					<tr>
+						<td style="width: 100px;">
+						    <a href="#" class="thumbnail">
+						      	<img src="/media/{{ image.image_raw }}">
+						    </a>
+						</td>
+						<td>
+							<h4><b>Image Name: </b>{{ image.surveying_area }}</h4>
+							<h5><b>Description: </b>{{ image.land_description }}</h5>
+						</td>
+					</tr>
+				</table>
+			
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Cropping Date</th>
+							<th>NDVI Pie Graph</th>
+							<th>OSAVI Pie Graph</th>
+							<th>Statistical</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for com in image.comparison_set.all %}
+						<tr>
+							<td class="cropping-date-compare-td">
+								<img src="/media/{{ com.raw }}" class="comparison-img-withdate">
+								<div class="date_desc">
+									<h4>{{ com.croppingdate }}</h4>
+									{{ com.description }}
+								</div>
+							</td>
+							<td style="vertical-align: middle;"><img src="/media/{{ com.ndvipiegraph }}" class="comparison-img"></td>
+							<td style="vertical-align: middle;"><img src="/media/{{ com.osavipiegraph }}" class="comparison-img"></td>
+							<td style="vertical-align: middle;"><img src="/media/{{ com.graph }}" class="comparison-img"></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<br>
+				The result of the Surveying Area: <b style="font-size: 15px; font-weight: bolder;">{{ image.image_raw }}</b> with Detail: <b style="font-size: 15px; font-weight: bolder;">{{ image.land_description }}</b> and its Cropping Details are true and correct with all the accurate readings of the Image Pocessing System this <span id="date"></span><sup>th</sup>  of <span id="month"></span> <span id="year"></span>.
+				<br><br><br><br>
+
+				<h4>[Name: ex. John Omar D. Esguerra]</h4>
+				<h5>[Position: ex. Regional Director]</h5>
+			</div>
+		</div>
+		
+		
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<script>
+	var d = new Date();
+	document.getElementById("date").innerHTML = d.getDate();
+	var month = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+	document.getElementById("month").innerHTML = month[d.getMonth()];
+	document.getElementById("year").innerHTML = d.getFullYear();
+
+</script>
+{% endblock %}

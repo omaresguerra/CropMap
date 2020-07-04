@@ -1,0 +1,197 @@
+{% extends 'cropmapapp/base.html' %}
+{% block images %} {% endblock %}
+{% block searchbar %} {% endblock %}
+{% block hideadd %} {% endblock %}
+{% block title %}CropMap | Image Processing System{% endblock %}
+{% block body %}
+{% load staticfiles %}
+<style type="text/css">
+	.bg{
+		background-image: url('{% static 'cropmapapp/img/bg2.jpg' %}'); 
+	}
+	.bg-mockup{
+		background-image: url({% static 'cropmapapp/img/bg3.jpg' %});
+	}
+</style>
+	<!-- Section 1 - RiceSense -->
+	<div class="bg">
+		<div class="bg1">
+			<div class="logo-contaier">
+				<img src="{% static 'cropmapapp/img/cropmaplogo.png' %}">
+			</div>
+			<div class="bg-body">
+				<h1 class="title-home">CropMap</h1>
+				<p class="center description">Empowering to risen your crop yield production with image processing system and data analytics. </p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Section 2 - How it Works -->
+	<div class="about">
+		<div class="about-title">
+			<h2 class="about-how">HOW IT WORKS</h2>
+			<h3 class="about-description">CropMap works online, automatically processes aerial data into false color maps, features a continuously expanding library of on-demand analysis tools, and makes sharing or collaborating easy.</h3>
+		</div>
+		<div class="row center">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-3">
+				<div class="logo-contaier-about">
+					<img src="{% static 'cropmapapp/img/uploaddata1.png' %}" class="img-logo-about">
+				</div>
+				<p class="about-description-logo">Upload data to your account.</p>
+			</div>
+			<div class="col-sm-4">
+				<div class="logo-contaier-about">
+					<img src="{% static 'cropmapapp/img/processdata.png' %}" class="img-logo-about">
+				</div>
+				<p class="about-description-logo">Process your data with the NDVI and OSAVI Algorithm.</p>
+			</div>
+			<div class="col-sm-3">
+				<div class="logo-contaier-about">
+					<img src="{% static 'cropmapapp/img/analyzedata.png' %}" class="img-logo-about">
+				</div>
+				<p class="about-description-logo">Analyze data with a library of on-demand analysis tools.</p>
+			</div>
+			<div class="col-sm-1">
+				
+			</div>
+		</div>
+	</div>
+
+	<!-- Section 4 - Device Mockup -->
+	<div class="bg-mockup">
+		<div class="bg-mockup-gray">
+			<div class="about-title">
+				<h2 class="mockup">VIEW WHAT YOU’VE PROCESSED IMAGE</h2>
+				<h3 class="mockup-description">CropMap is a desktop software that allows users to easily view processed NDVI and OSAVI images and a Statistical Graph to analyze the difference between the two vegetation indices.</h3>
+			</div>
+			<div class="row expand-101">
+				<div class="col-md-2">
+					
+				</div>
+				<div class="col-md-5">
+					<img src="{% static 'cropmapapp/img/ricesense-mockup.png' %}" class="img-mockup">
+				</div>
+				<div class="col-md-3 mockup-todo">
+					<ul style="color: #fff; list-style: circle;">
+						<li><p class="mockup-justclick">Just click Images in the Navigation Bar</p></li>
+						<li><p class="mockup-justclick">Browse for an Image to process</p></li>
+						<li><p class="mockup-justclick">And there you go!</p></li>
+					</ul>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Section 3 - Algorithm Analytics -->
+	<div class="bg-algorithm">
+		<div class="about-title">
+			<h2 class="algo">ANALYSIS MADE EASY WITH THE ALGORITHM MARKETPLACE</h2>
+			<h3 class="algo-description">Access a continually expanding library of professional, on-demand analysis tools to gain critical insights you want, when you need.</h3>
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<div class="border" id="flip">
+					<h3 class="algo-title">Normalized Difference Vegetation Index</h3>
+					<img src="{% static 'cropmapapp/img/ndvi.png' %}" class="algo-img">
+					<div class="algo-desc" id="algo-desc">
+						<h3 class="algo-desc-title">Description</h3>
+						<p class="algo-desc-desc">NDVI is the most common vegetation index, and is used to detect live, green, or photosynthetic capacity of plant canopies in multispectral remote sensing data. It is one of the most successful indices to quickly identify vegetated areas and their condition. This index can be used to analyze crops in all growth stages.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="border" id="flip2">
+					<h3 class="algo-title">Optimized Soil Adjusted Vegetation Index</h3>
+					<img src="{% static 'cropmapapp/img/osavi.png' %}" class="algo-img">
+					<div class="algo-desc" id="algo-desc2">
+						<h3 class="algo-desc-title">Description</h3>
+						<p class="algo-desc-desc">OSAVI is a simplified version of SAVI to minimize the influence of soil brightness. (SAVI was developed as a modification of the NDVI to correct for the influence of soil brightness.)  This index is recommended to analyze crops in early to mid growth stages, in areas with relatively sparse vegetation where soil is visible through the canopy.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<div class="bg-footer">
+		<div class="row bg-section1">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-3 col-xs-6">
+				<div class="page-header border-page">
+					<b class="nav-footer">MENU</b>
+				</div>
+				<ul class="ul-deco-none">
+					<li class="li-deco"><a href="{% url 'cropmapapp:index' %}" class="deco-none">Images</a></li>
+					<li class="li-deco"><a href="{% url 'cropmapapp:cropping' %}" class="deco-none">Cropping</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<div class="page-header border-page">
+					<b class="nav-footer">ABOUT</b>
+				</div>
+				<ul class="ul-deco-none">
+					<li class="li-deco"><a href="{% url 'cropmapapp:about' %}" class="deco-none">Our Mission</a></li>
+					<li class="li-deco"><a href="{% url 'cropmapapp:about' %}" class="deco-none">Our Team</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-2 col-xs-12 social-media">
+				<div class="page-header border-page">
+					<b class="nav-footer">CONNECT WITH US</b>
+				</div>
+				<div class="col-sm-12 center">
+					<a href="http://www.facebook.com"><h3 class="social"><i class="fa fa-facebook social-logo"></i></h3></a>
+					<a href="http://www.instagram.com"><h3 class="social"><i class="fa fa-instagram social-logo"></i></h3></a>
+					<a href="http://www.twitter.com"><h3 class="social"><i class="fa fa-twitter social-logo"></i></h3></a>
+					<a href="http://www.linkedin.com"><h3 class="social"><i class="fa fa-linkedin social-logo"></i></h3></a>
+					<a href="http://www.youtube.com"><h3 class="social"><i class="fa fa-youtube social-logo"></i></h3></a>
+				</div>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+		<div class="row bg-section2">
+			<div class="col-sm-12 footer-last center">
+				&copy; CropMap 2018
+			</div>
+		</div>
+	</div>
+
+	<script>
+	 $(document).ready(function(){
+	    var $win = $(window);
+
+	    $('div.bg').each(function(){
+	        var scroll_speed = 2;
+	        var $this = $(this);
+	        $(window).scroll(function() {
+	            var bgScroll = -(($win.scrollTop() - $this.offset().top)/ scroll_speed);
+	            var bgPosition = 'center '+ bgScroll + 'px';
+	            $this.css({ backgroundPosition: bgPosition });
+	        });
+	    });
+
+	    $('div.bg-mockup').each(function(){
+	        var scroll_speed = 2;
+	        var $this = $(this);
+	        $(window).scroll(function() {
+	            var bgScroll = -(($win.scrollTop() - $this.offset().top)/ scroll_speed);
+	            var bgPosition = 'center '+ bgScroll + 'px';
+	            $this.css({ backgroundPosition: bgPosition });
+	        });
+	    });
+
+
+	    $("#flip").click(function(){
+		    $("#algo-desc").slideToggle("slow");
+		});
+
+	    $("#flip2").click(function(){
+		    $("#algo-desc2").slideToggle("slow");
+		});
+	});
+	</script>
+	
+{% endblock %}

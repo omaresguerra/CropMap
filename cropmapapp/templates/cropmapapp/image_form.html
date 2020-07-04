@@ -1,0 +1,50 @@
+{% extends 'cropmapapp/base.html' %}
+{% block title %}CropMap | Add New Image{% endblock %}
+{% block images %}active{% endblock %}
+{% block body %}
+	<div class="row padding-for-form-add">
+		<div class="col-sm-7">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="page-header" style="margin-top: -10px;">
+						{% block header %} <h3>Add a New Image</h3> {% endblock %}
+					</div>
+					
+					{% if error_message %}
+						<div class="col-sm-offset-3 col-sm-9">
+							<p style="color: red; font-weight: bold;">{{ error_message }}</p>
+						</div>
+                	{% endif %}
+					<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						{% include 'cropmapapp/form-template.html' %}
+						<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+								<button type="submit" class="btn btn-success">Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-5">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h3>What is CropMap?</h3>
+                    <p>CropMap is an image processing system that processes NIR images with the used of NDVI and OSAVI algorithm. It also allows you to monitor croppings with your field and make a comparative analysis.</p>
+                    <h3>How do I add image?</h3>
+                    <p>Just browse for a NIR image you want to process. Enter the image name and a brief description.</p>
+                    <h3>What are some Image files best practices?</h3>
+                    <ul>
+                    	<li>Must be a NIR image captured by drone through NIR filter</li>
+                        <li>Have a resolution of 512 x 512</li>
+                      	<li>Use common image formats such as .JPG, .JPEG, or .PNG</li>
+                        <li>Remain under the 2MB limit</li>
+                        <li>Square images look best</li>
+                    </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

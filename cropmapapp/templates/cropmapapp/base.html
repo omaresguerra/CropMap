@@ -1,0 +1,92 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  	<title>{% block title %}CropMap{% endblock %}</title>
+  	{% load staticfiles %}
+  	<link rel="shortcut icon" type="image/png" href="{%  static 'cropmapapp/img/cropmaplogo.png' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'cropmapapp/css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'cropmapapp/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'cropmapapp/css/style.css' %}">
+	<script src="{% static 'cropmapapp/js/bootstrap.js' %}"></script>
+	<script src="{% static 'cropmapapp/js/jquery.js' %}"></script>
+	<script src="{% static 'cropmapapp/js/bootstrap.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'cropmapapp/css/font-awesome.min.css' %}">
+ </head>
+ <body>
+  	<div class="wrapper">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				
+				<!-- Header -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand title" href="{% url 'cropmapapp:home' %}"><img src="{%  static 'cropmapapp/img/cropmaplogo.png' %}" class="img-logo-nav"><b class="title-base">CropMap</b></a>
+				</div>
+
+				<!-- Items -->
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="{% block images %}{% endblock %}">
+							<a href="{% url 'cropmapapp:index' %}" class="link">
+								<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>&nbsp; IMAGES
+							</a>
+						</li>
+						<li class="{% block cropping %} {% endblock %}">
+							<a href="{% url 'cropmapapp:cropping' %}" class="link">
+								<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp; CROPPINGS
+							</a>
+						</li>
+					</ul>
+					{% block searchbar %}
+					<form class="navbar-form navbar-left" role="search" method="get" action="{% block search_in_index %} {% url 'cropmapapp:index' %} {% endblock %}">
+						<div class="form-group">
+							<input type="text" class="form-control" name="q" value="{{ request.GET.q }}">
+						</div>
+						<button type="submit" class="btn btn-default">SEARCH</button>
+					</form>
+					{% endblock %}
+					<ul class="nav navbar-nav navbar-right">
+						{% block hideadd %}
+						<li class="#">
+							<a href="{% block addimage %} {% url 'cropmapapp:image-add' %} {% endblock %}" class="link">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; {% block addmenu %} ADD IMAGE {% endblock %}
+							</a>
+						</li>
+						{% endblock %}
+						<li class="{% block about %} {% endblock %}">
+							<a href="{% url 'cropmapapp:about' %}" class="link">
+								<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>&nbsp; ABOUT
+							</a>
+						</li>
+						<li class="#">
+							<a href="#" class="link">
+								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; {{ user }}
+							</a>
+						</li>
+						<li class="#">
+							<a href="{% url 'cropmapapp:logout_user' %}" class="link">
+								<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; LOGOUT
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+	
+	<div class="container-fluid image-body">
+		{% block body %}
+		{% endblock %}
+	</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends 'cropmapapp/base.html' %}
+{% block images %}{% endblock %}
+{% block cropping %} active {% endblock %}
+{% block addimage %} {% url 'cropmapapp:cropping-add'  %} {% endblock %}
+{% block addmenu %} ADD CROPPING {% endblock %}
+{% block title %}CropMap | Croppings{% endblock %}
+{% block search_in_index %} {% url 'cropmapapp:cropping' %} {% endblock %}
+
+{% block body %}
+	<div class="page-header">
+		<h2>Here are all Croppings</h2>
+	</div>
+	
+	<div class="row">
+		{% if images %}
+		{% for image in images %}
+			<div class="col-sm-3">
+	            <div class="panel panel-default popup">
+	               	<div class="panel-body center">
+	               		<a href="{% url 'cropmapapp:croppingdetail' image.id %}"><img src="{{ image.image_raw.url }}" class="image-width output-img"></a>
+	               	</div>
+	               	<div class="panel-footer">
+	               		<div class="form-group" style="margin-top: -10px;">
+	               			<h3>{{ image.surveying_area}}</h3>
+	               			<p>
+		               			{{ image.address }}<br>
+		               			{{ image.land_description }}
+		               		</p>
+							<a href="{% url 'cropmapapp:croppingdetail' image.id %}" class="btn btn-success btn-sm">View Croppings</a>
+							<!-- <form action="{% url 'cropmapapp:croppingdetail' image.id %}" method="post" style="display: inline;">
+							{% csrf_token %}
+								<button class="btn btn-default btn-sm">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</button>
+							</form> -->
+			               	<form action="{% url 'cropmapapp:croppingimage-delete' image.id %}" method="post" style="display: inline;">
+							{% csrf_token %}
+								<button class="btn btn-default btn-sm">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</form>
+	               		</div>	               		
+	               	</div>
+	            </div>
+	        </div>	
+	        {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}	
+		{% endfor %}
+		{% else %}
+			<div class="col-sm-12">
+                <br>
+                <a href="{% url 'cropmapapp:cropping-add' %}">
+                    <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp; Add an Cropping
+                    </button>
+                </a>
+            </div>
+        {% endif %}
+	</div>
+	
+{% endblock %}

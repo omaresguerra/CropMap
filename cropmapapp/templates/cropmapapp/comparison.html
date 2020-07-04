@@ -1,0 +1,68 @@
+{% extends 'cropmapapp/base.html' %}
+{% block cropping %} active {% endblock %}
+{% block title %}CropMap | Comaprison of Croppings{% endblock %}
+{% block addimage %} {% url 'cropmapapp:cropping-add'  %} {% endblock %}
+{% block addmenu %} ADD CROPPING {% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-sm-2 detail-body fixed-detail">
+			<div class="panel panel-default popup">
+				<div class="panel-body center">
+					{% load staticfiles %}
+					<img src="{% static 'cropmapapp/img/legend1.jpg' %}" class="image-width legend-img">
+				</div>
+				<div class="panel-footer"> 
+					Legend
+				</div>
+			</div>
+
+			<div class="popup need-padding">
+				<div class="row">
+					<div class="col-xs-12 center">
+						<a href="{% url 'cropmapapp:croppingdetail' image.id %}"><img src="/media/{{ image.image_raw }}" class="small-image-comparison"></a>
+					</div>
+					<div class="col-xs-12 center" style="padding-top: 10px;">
+						<b class="detail-name-bold">{{ image.surveying_area }}</b>
+	           			<p>{{ image.land_description }}</p>
+	               		
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-10 detail-right">
+			<div class="comparison-header">
+				<h2>Comparison of Croppings <a href="{% url 'cropmapapp:print-comparison' image.id %}" class="btn btn-default"><span class="glyphicon glyphicon-print"></span> &nbsp;Print Data </a></h2> 
+			</div>
+			<div class="table-responsive">
+	            <table class="table table-bordered">
+	                <thead>
+	                    <tr>
+	                    	<th>Cropping Date</th>
+	                        <th>NDVI Pie Graph</th>
+	                        <th>OSAVI Pie Graph</th>
+	                        <th>Statistical Graph</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                	{% for com in image.comparison_set.all %}
+						<tr>
+							<td class="cropping-date-compare-td">
+								<img src="/media/{{ com.raw }}" class="comparison-img-withdate">
+								<div class="date_desc">
+									<h4>{{ com.croppingdate }}</h4>
+									{{ com.description }}
+								</div>
+							</td>
+							<td style="vertical-align: middle;"><img src="/media/{{ com.ndvipiegraph }}" class="comparison-img"></td>
+							<td style="vertical-align: middle;"><img src="/media/{{ com.osavipiegraph }}" class="comparison-img"></td>
+							<td style="vertical-align: middle;"><img src="/media/{{ com.graph }}" class="comparison-img"></td>
+						</tr>
+						{% endfor %}
+	                </tbody>
+	            </table>
+            </div>     
+		</div>
+	</div>
+{% endblock %}

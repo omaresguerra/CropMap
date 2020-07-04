@@ -1,0 +1,135 @@
+{% extends 'cropmapapp/base.html' %}
+{% block title %}CropMap | Image Data{% endblock %}
+{% block images %}active{% endblock %}
+
+{% block body %}
+	
+	<div class="row">
+		<div class="col-sm-3 detail-body fixed-detail">
+			<div class="panel panel-default popup">
+				<div class="panel-body center">
+					{% load staticfiles %}
+					<img src="{% static 'cropmapapp/img/legend1.jpg' %}" class="image-width legend-img">
+				</div>
+				<div class="panel-footer">
+					Legend
+				</div>
+			</div>
+	
+			<div class="popup need-padding">
+				<div class="row">
+					<div class="col-xs-4">
+						<img src="/media/{{ image.image_raw }}" class="small-image">
+					</div>
+					<div class="col-xs-8 detail-tmb-desc-con">
+						<b class="detail-name-bold">{{ image.image_name }}</b>
+	           			<p>{{ image.image_description }}</p>
+	               		
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-sm-9 detail-right">
+			<div class="page-header">
+				<h2>Image Data <a href="{% url 'cropmapapp:print-data' image.id %}" class="btn btn-default"><span class="glyphicon glyphicon-print"></span> &nbsp;Print Data</a> </h2>
+			</div>
+			<div class="row"> 
+				{% for data in image.data_set.all %}
+					<div class="col-sm-4">
+						<div class="panel panel-default popup">
+							<div class="panel-heading">
+								RAW IMAGE
+							</div>
+							<div class="panel-body center">
+								<img src="/media/{{ data.raw }}" class="image-width output-img">
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default popup">
+							<div class="panel-heading">
+								NDVI READING
+							</div>
+							<div class="panel-body center">
+								<img src="/media/{{ data.ndvi }}" class="image-width output-img">
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default popup">
+							<div class="panel-heading">
+								OSAVI READING
+							</div>
+							<div class="panel-body center">
+								<img src="/media/{{ data.osavi }}" class="image-width output-img">
+							</div>
+						</div>
+					</div>
+
+					<!-- NEXT LINE -->
+					<!-- <div class="col-sm-"></div> -->
+					<div class="col-sm-3">
+						<div class="panel panel-default popup">
+							<div class="panel-heading">
+								NDVI 4X4 READING
+							</div>
+							<div class="panel-body center">
+								<img src="/media/{{ data.ndvi_4x4 }}" class="image-width output-img">
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="panel panel-default popup">
+							<div class="panel-heading">
+								OSAVI 4X4 READING
+							</div>
+							<div class="panel-body center">
+								<img src="/media/{{ data.osavi_4x4 }}" class="image-width output-img">
+							</div>
+						</div>
+					</div>
+					<!-- <div class="col-sm-2"></div> -->
+
+					<div class="col-sm-6">
+						<div class="panel panel-default popup">
+							<div class="panel-heading">
+								STATISTICAL GRAPH
+							</div>
+							<div class="panel-body center">
+								<img src="/media/{{ data.graph }}" class="image-width output-img-graph">
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-sm-6">
+						<div class="panel panel-default popup">
+							<div class="panel-heading">
+								NDVI PIE GRAPH
+							</div>
+							<div class="panel-body center">
+								<img src="/media/{{ data.ndvipiegraph }}" class="image-width output-img-graph">
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="panel panel-default popup">
+							<div class="panel-heading">
+								OSAVI PIE GRAPH
+							</div>
+							<div class="panel-body center">
+								<img src="/media/{{ data.osavipiegraph }}" class="image-width output-img-graph">
+							</div>
+						</div>
+					</div>
+
+					<!-- <div class="col-sm-2"></div> -->
+					
+					<!-- <div class="col-sm-2"></div> -->
+
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

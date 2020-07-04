@@ -1,0 +1,70 @@
+{% extends 'cropmapapp/base.html' %}
+{% block title %}CropMap | Add New Cropping Data{% endblock %}
+{% block images %} {% endblock %}
+{% block cropping %}active{% endblock %}
+{% block addimage %} {% url 'cropmapapp:cropping-add'  %} {% endblock %}
+{% block addmenu %} ADD CROPPING{% endblock %}
+
+{% block body %}
+	<div class="row padding-for-form-add">
+		<!-- Left Album Info -->
+        <div class="col-sm-2">
+        	<a href="{% url 'cropmapapp:croppingdetail' image.id %}" class="link-cropping-detail">
+            	<div class="need-padding popup" style="margin-bottom: 20px;">
+            		<div class="row">
+	            		<div class="col-xs-12 center">
+	                        {% if image.image_raw %}
+	                            <img src="{{ image.image_raw.url }}" class="small-image-comparison">
+	                        {% else %}
+	                            <h3>No image to display</h3>
+	                        {% endif %}
+		                	<h4>{{ image.surveying_area }}</h4>
+	           				<p>{{ image.address }}<br>{{ image.land_description }}</p>
+		                </div>
+	                </div>
+	            </div>
+            </a>
+        </div>
+
+		<div class="col-sm-6">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{% block header %} <h3 style="padding-bottom: 6px;">Add a New Cropping Data</h3>{% endblock %}
+				 	{% if error_message %}
+	                    <div class="col-sm-3"></div>
+	                    <p style="color: red;"><strong>{{ error_message }}!</strong></p>
+	                {% endif %}
+					<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<input class="hidden" name="image" value="{{ image }}">
+						{% include 'cropmapapp/form-template.html' %}
+						<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+								<button type="submit" class="btn btn-success">Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h3>What is CropMap?</h3>
+                    <p>CropMap is an image processing system that processes NIR images with the used of NDVI and OSAVI algorithm. It also allows you to monitor croppings with your field and make a comparative analysis.</p>
+                    <h3>How do I add cropping data?</h3>
+                    <p>Just browse for a NIR image you want to process. Enter the image name and a brief description.</p>
+                    <h3>What are some Image files best practices?</h3>
+                    <ul>
+                    	<li>Must be a NIR image captured by drone through NIR filter</li>
+                        <li>Have a resolution of 512 x 512</li>
+                        <li>Use common image formats such as .JPG, .JPEG, or .PNG</li>
+                        <li>Remain under the 2MB limit.</li>
+                        <li>Square images look best</li>
+                    </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

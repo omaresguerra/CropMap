@@ -1,0 +1,172 @@
+{% extends 'cropmapapp/base.html' %}
+{% block images %} {% endblock %}
+{% block searchbar %} {% endblock %}
+{% block hideadd %} {% endblock %}
+{% block title %}CropMap | About{% endblock %}
+{% block about %} active {% endblock %}
+{% block body %}
+{% load staticfiles %}
+<style type="text/css">
+	.bg-about{
+		background-image: url('{% static 'cropmapapp/img/bg2.jpg' %}'); 
+	}
+	.developers{
+		background-image: url('{% static 'cropmapapp/img/polygon.jpg' %}'); 
+	}
+</style>
+	<!-- Section 1 - RiceSense -->
+	<div class="bg bg-about">
+		<div class="bg1 bg1-about">
+			<div class="bg-body">
+				<h1 class="title-about">About CropMap</h1>
+				<p class="center description-about">The need for better data and profound passion for technology lie at the core of our existence.</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Section 2 - How it Works -->
+	<div class="about about-1">
+		<div class="logo-contaier">
+				<h1 style="font-size: 60px;padding-bottom: 10px; "><i class="fa fa-shield"></i></h1>
+		</div>
+		<div class="about-title-about">
+			<h2 class="about-how">THE MISSION PLAN</h2>
+			<h3 class="about-description about-description1">CropMap is dedicated to changing the way businesses view their assets and manage resources. To extract the true commercial value of drones, we must continue to advance a multifaceted technology that includes advanced robotics, robust software, and rich data.</h3>
+		</div>
+	</div>
+
+	<!-- Section 4 - Device Mockup -->
+	<div class="developers" id="developer">
+		<div class="bg-mockup-gray developer-bg">
+			<div class="about-title">
+				<h2 class="mockup">OUR TEAM</h2>
+				<h3 class="mockup-description">Our intelligence gives us ideas and instructions. But it is our ability to cooperate that allows us get things done.</h3>
+			</div>
+			<div class="row expand-101">
+				<div class="col-md-1">
+					
+				</div>
+				<div class="col-md-10">
+					<div class="col-md-4">
+						<div class="dev-container" id="jhen">
+							<img src="{% static 'cropmapapp/img/jhen.png' %}" class="developer-img">
+							<h3 class="dev-name">Roger P. Carpio Jr.</h3>
+							<p class="dev-desc">jhencarpio@gmail.com</p>
+							<div class="name-description" id="jhen-desc">
+								<p><i class="glyphicon glyphicon-map-marker"></i> Ugac Norte, Tuguegarao City, Cagayan</p>
+								<p><i class="glyphicon glyphicon-phone"></i> 0995-198-9314</p>
+								<p><i class="fa fa-book"></i> &nbsp;Bachelor of Science in Computer Science</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="dev-container" id="omar">
+							<img src="{% static 'cropmapapp/img/omar.png' %}" class="developer-img">
+							<h3 class="dev-name">John Omar D. Esguerra</h3>
+							<p class="dev-desc">esguerrajohnomar@gmail.com</p>
+							<div class="name-description" id="omar-desc">
+								<p><i class="glyphicon glyphicon-map-marker"></i> Antagan 1, Tumauini, Isabela</p>
+								<p><i class="glyphicon glyphicon-phone"></i> 0910-440-0435</p>
+								<p><i class="fa fa-book"></i> &nbsp;Bachelor of Science in Computer Science</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="dev-container" id="joseph">
+							<img src="{% static 'cropmapapp/img/joseph.png' %}" class="developer-img">
+							<h3 class="dev-name">Joseph V. Maribbay Jr.</h3>
+							<p class="dev-desc">sentmaribbay@gmail.com</p>
+							<div class="name-description" id="joseph-desc">
+								<p><i class="glyphicon glyphicon-map-marker"></i> Pengue-Ruyu, Tuguegrao City, Cagayan</p>
+								<p><i class="glyphicon glyphicon-phone"></i> 0935-363-2884</p>
+								<p><i class="fa fa-book"></i> &nbsp;Bachelor of Science in Computer Science</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<div class="bg-footer">
+		<div class="row bg-section1">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-3 col-xs-6">
+				<div class="page-header border-page">
+					<b class="nav-footer">MENU</b>
+				</div>
+				<ul class="ul-deco-none">
+					<li class="li-deco"><a href="{% url 'cropmapapp:index' %}" class="deco-none">Images</a></li>
+					<li class="li-deco"><a href="{% url 'cropmapapp:cropping' %}" class="deco-none">Cropping</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<div class="page-header border-page">
+					<b class="nav-footer">HOME</b>
+				</div>
+				<ul class="ul-deco-none">
+					<li class="li-deco"><a href="{% url 'cropmapapp:home' %}" class="deco-none">CropMap</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-2 col-xs-12 social-media">
+				<div class="page-header border-page">
+					<b class="nav-footer">SOCIAL LINKS</b>
+				</div>
+				<div class="col-sm-12 center">
+					<a href="http://www.facebook.com"><h3 class="social"><i class="fa fa-facebook social-logo"></i></h3></a>
+					<a href="http://www.instagram.com"><h3 class="social"><i class="fa fa-instagram social-logo"></i></h3></a>
+					<a href="http://www.twitter.com"><h3 class="social"><i class="fa fa-twitter social-logo"></i></h3></a>
+					<a href="http://www.linkedin.com"><h3 class="social"><i class="fa fa-linkedin social-logo"></i></h3></a>
+					<a href="http://www.youtube.com"><h3 class="social"><i class="fa fa-youtube social-logo"></i></h3></a>
+				</div>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+		<div class="row bg-section2">
+			<div class="col-sm-12 footer-last center">
+				&copy; CropMap 2018
+			</div>
+		</div>
+	</div>
+
+	<script>
+	 $(document).ready(function(){
+	    var $win = $(window);
+
+	    $('div.bg-about').each(function(){
+	        var scroll_speed = 2;
+	        var $this = $(this);
+	        $(window).scroll(function() {
+	            var bgScroll = -(($win.scrollTop() - $this.offset().top)/ scroll_speed);
+	            var bgPosition = 'center '+ bgScroll + 'px';
+	            $this.css({ backgroundPosition: bgPosition });
+	        });
+	    });
+
+	    $('div.developers').each(function(){
+	        var scroll_speed = 2;
+	        var $this = $(this);
+	        $(window).scroll(function() {
+	            var bgScroll = -(($win.scrollTop() - $this.offset().top)/ scroll_speed);
+	            var bgPosition = 'center '+ bgScroll + 'px';
+	            $this.css({ backgroundPosition: bgPosition });
+	        });
+	    });
+
+
+	    $("#omar").click(function(){
+		    $("#omar-desc").slideToggle("slow");
+		});
+
+	    $("#jhen").click(function(){
+		    $("#jhen-desc").slideToggle("slow");
+		});
+
+		$("#joseph").click(function(){
+		    $("#joseph-desc").slideToggle("slow");
+		});
+	});
+	</script>
+{% endblock %}
