@@ -842,6 +842,7 @@ def test_algorithm_data(request, image_id, data_id):
     import numpy as np
     import tkinter as tk
     from matplotlib import pyplot as plt
+    matplotlib.use('Agg')
     import os
     import matplotlib.patches as mpathches
 
