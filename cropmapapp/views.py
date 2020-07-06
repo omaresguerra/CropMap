@@ -247,7 +247,7 @@ def test_algorithm(request, image_id):
 
     import cv2
     import numpy as np
-    import tkinter as tk
+    #import tkinter as tk
     import matplotlib
     matplotlib.use('Agg')
     from matplotlib import pyplot as plt
@@ -255,7 +255,7 @@ def test_algorithm(request, image_id):
     import matplotlib.patches as mpathches
 
     np.seterr(divide = 'ignore', invalid = 'ignore')
-    root = tk.Tk()
+    #root = tk.Tk()
     # def retrieve_input():
     images = str(image.image_raw)
     print(images)
@@ -842,7 +842,7 @@ def test_algorithm_data(request, image_id, data_id):
 
     import cv2
     import numpy as np
-    import tkinter as tk
+    #import tkinter as tk
     import matplotlib
     matplotlib.use('Agg')
     from matplotlib import pyplot as plt
@@ -850,7 +850,7 @@ def test_algorithm_data(request, image_id, data_id):
     import matplotlib.patches as mpathches
 
     np.seterr(divide = 'ignore', invalid = 'ignore')
-    root = tk.Tk()
+    #root = tk.Tk()
 
     croppingdatas = str(croppingdata.cropping)
     print(croppingdatas)
