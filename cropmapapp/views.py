@@ -248,6 +248,8 @@ def test_algorithm(request, image_id):
     import cv2
     import numpy as np
     import tkinter as tk
+    import matplotlib
+    matplotlib.use('Agg')
     from matplotlib import pyplot as plt
     import os
     import matplotlib.patches as mpathches
@@ -841,8 +843,9 @@ def test_algorithm_data(request, image_id, data_id):
     import cv2
     import numpy as np
     import tkinter as tk
-    from matplotlib import pyplot as plt
+    import matplotlib
     matplotlib.use('Agg')
+    from matplotlib import pyplot as plt
     import os
     import matplotlib.patches as mpathches
 
