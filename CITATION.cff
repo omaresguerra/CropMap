@@ -1,0 +1,11 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Esguerra"
+  given-names: "John Omar"
+  orcid: "https://orcid.org/0000-0001-9214-6442"
+title: "CropMap"
+version:  v0.1.0
+doi: 10.5281/zenodo.7976825
+date-released: 2023-05-27
+url: "https://github.com/omaresguerra/CropMap"
